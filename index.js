@@ -1,4 +1,4 @@
-var Resource = require('../model/resource');
+var Resource = require('plumber').Resource;
 
 var crypto = require('crypto');
 
