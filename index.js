@@ -21,6 +21,7 @@ module.exports = function(/* no options */) {
         });
 
         var mappingResource = new Resource({
+            type:     'json',
             filename: 'assets-mapping.json',
             data:     JSON.stringify(mapping)
         });
