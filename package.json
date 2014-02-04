@@ -4,13 +4,11 @@
   "description": "Filename hashing operation for Plumber pipelines",
   "main": "index",
   "dependencies": {
-    "plumber": "~0.1.13",
-    "crypto": "0.0.3"
+    "plumber": "~0.2.4"
   },
   "devDependencies": {
     "mocha": "~1.16.2",
-    "should": "~2.1.1",
-    "plumber": "~0.1.17"
+    "should": "~2.1.1"
   },
   "scripts": {
     "test": "node_modules/.bin/mocha"
