@@ -4,9 +4,10 @@
   "description": "Filename hashing operation for Plumber pipelines",
   "main": "index",
   "dependencies": {
-    "plumber": "~0.2.4"
+    "plumber": "~0.3.0"
   },
   "devDependencies": {
+    "plumber-util-test": "~0.3.0",
     "mocha": "~1.16.2",
     "should": "~2.1.1"
   },
