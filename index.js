@@ -1,3 +1,4 @@
+var operation = require('plumber').operation;
 var Resource = require('plumber').Resource;
 
 var crypto = require('crypto');
@@ -11,7 +12,7 @@ function hash(data) {
 }
 
 module.exports = function(/* no options */) {
-    return function(resources) {
+    return operation(function(resources) {
         var mapping = {};
         var hashedResources = resources.map(function(resource) {
             var hashKey = hash(resource.data());
@@ -20,12 +21,16 @@ module.exports = function(/* no options */) {
             return hashedResource;
         });
 
-        var mappingResource = new Resource({
-            type:     'json',
-            filename: 'assets-mapping.json',
-            data:     JSON.stringify(mapping)
+        // yield this once reached the end
+        // TODO: don't use mutate var outside the scope?
+        var mappingResource = hashedResources.observe().collect().map(function() {
+            return new Resource({
+                type:     'json',
+                filename: 'assets-mapping.json',
+                data:     JSON.stringify(mapping)
+            });
         });
 
         return hashedResources.concat(mappingResource);
-    };
+    });
 };
