@@ -23,7 +23,7 @@ module.exports = function(/* no options */) {
 
         // yield this once reached the end
         // TODO: don't use mutate var outside the scope?
-        var mappingResource = hashedResources.observe().collect().map(function() {
+        var mappingResource = hashedResources.toArray().map(function() {
             return new Resource({
                 type:     'json',
                 filename: 'assets-mapping.json',
