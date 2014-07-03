@@ -1,15 +1,15 @@
 {
   "name": "plumber-hash",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Filename hashing operation for Plumber pipelines",
   "main": "index",
-  "dependencies": {
-    "plumber": "~0.3.0"
+  "peerDependencies": {
+    "plumber": "~0.4.0"
   },
   "devDependencies": {
-    "plumber-util-test": "~0.3.0",
+    "plumber-util-test": "~0.4.0",
     "mocha": "~1.16.2",
-    "should": "~2.1.1"
+    "chai": "~1.8.1"
   },
   "scripts": {
     "test": "node_modules/.bin/mocha"
