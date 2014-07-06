@@ -1,5 +1,6 @@
 var operation = require('plumber').operation;
 var Resource = require('plumber').Resource;
+var Rx = require('plumber').Rx;
 
 var crypto = require('crypto');
 
@@ -23,12 +24,12 @@ module.exports = function(/* no options */) {
 
         // yield this once reached the end
         // TODO: don't use mutate var outside the scope?
-        var mappingResource = hashedResources.toArray().map(function() {
-            return new Resource({
+        var mappingResource = Rx.Observable.defer(function() {
+            return Rx.Observable.return(new Resource({
                 type:     'json',
                 filename: 'assets-mapping.json',
                 data:     JSON.stringify(mapping)
-            });
+            }));
         });
 
         return hashedResources.concat(mappingResource);
